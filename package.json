@@ -5,6 +5,9 @@
   "scripts": {
     "start": "nodemon ./bin/www"
   },
+  "engines": {
+    "node": "v12.1.0"
+  },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "bootstrap": "file:bootstrap",
