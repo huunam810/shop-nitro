@@ -1,0 +1,295 @@
+{{!-- <div class="row">
+    <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
+        <h1>Checkout</h1>
+        <h4>Your Total: ${{total}}</h4>
+        <div id="charge-error" class="alert alert-danger {{#if noError}}hidden{{/if}}">
+            {{errMsg}}
+        </div>
+        <form action="/checkout" method="post" id="checkout-form">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" class="form-control" required name="name">
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" id="address" class="form-control" required name="address">
+                    </div>
+                </div>
+                <hr>
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="card-name">Card Holder Name</label>
+                        <input type="text" id="card-name" class="form-control" required>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="card-number">Credit Card Number</label>
+                        <input type="text" id="card-number" class="form-control" required>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="form-group">
+                                <label for="card-expiry-month">Expiration Month</label>
+                                <input type="text" id="card-expiry-month" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="form-group">
+                                <label for="card-expiry-year">Expiration Year</label>
+                                <input type="text" id="card-expiry-year" class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="card-cvc">CVC</label>
+                        <input type="text" id="card-cvc" class="form-control" required>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success">Buy now</button>
+        </form>
+    </div>
+</div>
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script type="text/javascript" src="javascripts/checkout.js"></script>
+
+<script>
+    Stripe.setPublishableKey('pk_test_iAEnuD7c8xkojnqJfXqs4P6j00mwoK2JKW');
+
+var $form = $('#checkout-form');
+
+$form.submit(function (event) {
+    $('#charge-error').addClass('hidden');
+    $form.find('button').prop('disabled', true);
+    Stripe.card.createToken({
+        number: $('#card-number').val(),
+        cvc: $('#card-cvc').val(),
+        exp_month: $('#card-expiry-month').val(),
+        exp_year: $('#card-expiry-year').val(),
+        name: $('#card-name').val()
+    }, stripeResponseHandler);
+    return false;
+});
+
+function stripeResponseHandler(status, response) {
+    console.log(response.error)
+
+    if (response.error) { // Problem!
+        // Show the errors on the form
+        $('#charge-error').text(response.error);
+        $('#charge-error').removeClass('hidden');
+        $form.find('button').prop('disabled', false); // Re-enable submission
+
+    } else { // Token was created!
+
+        // Get the token ID:
+        var token = response.id;
+
+        // Insert the token into the form so it gets submitted to the server:
+        $form.append($('<input type="hidden" name="stripeToken" />').val(token));
+
+        // Submit the form:
+        $form.get(0).submit();
+
+    }
+}
+</script> --}}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/0.6.6/tailwind.min.css">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://kit.fontawesome.com/f54d3de4fb.js"></script>
+    <style>
+        .max-w-2lg {
+  max-width: 56rem;
+}
+    </style>
+</head>
+
+<body>
+    <div class="h-full bg-grey-lighter font-sans antialiased select-none">
+    <nav class="container mx-auto">
+        <div class="flex items-center justify-between border-b-2 border-grey-light py-8 mb-16">
+            <a href="/"></a>
+            
+        </div>
+    </nav>
+
+    <section class="max-w-2lg mx-auto">
+        <div class="flex mb-10 shadow-lg">
+            <div class="w-2/3 bg-white rounded-l">
+                <form action="/checkout" method="post" id="checkout-form">
+                    <h1 class="text-3xl font-normal p-10 border-b border-grey-light">Checkout</h1>
+                    <h4>Your Total: ${{total}}</h4>
+                    <div id="charge-error" class="alert alert-danger {{#if noError}}hidden{{/if}}">
+                        {{errMsg}}
+                    </div>
+                    <div class="p-10 pt-8 border-b border-grey-light">
+                        <div class="flex items-center mb-4">
+                            <div class="border-2 border-blue px-3 py-2 rounded-full font-bold text-blue mr-2">1</div>
+                            <h2 class="text-lg">Your Basic Information</h2>
+                        </div>
+
+                        <div class="flex flex-wrap -mx-4">
+                            <div class="w-2/3 px-4">
+                                <label for="name" class="block text-sm mb-2">Name</label>
+                                <input type="text" id="name" class="w-full text-sm bg-grey-light text-grey-darkest rounded p-3 focus:outline-none" placeholder="janedoe" required name="name">
+                            </div>
+                            <div class="w-2/3 px-4">
+                                <label for="address" class="block text-sm mb-2">Address</label>
+                                <input type="text" id="address" required name="address" class="w-full text-sm bg-grey-light text-grey-darkest rounded p-3 focus:outline-none" placeholder="janedoe@example.com">
+                            </div>
+                      
+                        </div>
+                    </div>
+                    
+                    <div class="p-10 pt-8 border-b border-grey-light">
+                        
+                        <div class="flex items-center mb-4">
+                            <div class="border-2 border-blue px-3 py-2 rounded-full font-bold text-blue mr-2">2</div>
+                            <h2 class="text-lg">Your Payment Information</h2>
+                        </div>
+
+                        <div class="flex flex-wrap -mx-4">
+                            <div class="w-2/3 px-4">
+                                <label for="card-name" class="block text-sm mb-2">Card Holder Name</label>
+                                <input type="text" id="card-name" required class="w-full text-sm bg-grey-light text-grey-darkest rounded p-3 focus:outline-none" placeholder="janedoe@example.com">
+                            </div>
+                            <div class="w-2/3 px-4">
+                                <label for="card-number" class="block text-sm mb-2">Card Number</label>
+                                <input type="text" id="card-number" required class="w-full text-sm bg-grey-light text-grey-darkest rounded p-3 focus:outline-none" placeholder="4242 4242 4242 4242">
+                            </div>
+                            <div class="w-2/3 px-4">
+                                <label for="card-expiry-month" class="block text-sm mb-2">Expiration Month</label>
+                                <input type="text" id="card-expiry-month" required class="w-full text-sm bg-grey-light text-grey-darkest rounded p-3 focus:outline-none" placeholder="janedoe@example.com">
+                            </div>
+                            <div class="w-2/3 px-4">
+                                <label for="card-expiry-year" class="block text-sm mb-2">Expiration Year</label>
+                                <input type="text" id="card-expiry-year" required class="w-full text-sm bg-grey-light text-grey-darkest rounded p-3 focus:outline-none" placeholder="janedoe@example.com">
+                            </div>
+                            <div class="w-2/3 px-4">
+                                <label for="card-cvc" class="block text-sm mb-2">CVC</label>
+                                <input type="text" id="card-cvc" required class="w-full text-sm bg-grey-light text-grey-darkest rounded p-3 focus:outline-none" placeholder="janedoe@example.com">
+                            </div>
+                
+                        </div>
+                    </div>
+
+                    <div class="p-10 pt-8">
+                        <button type="submit" class="w-full bg-green text-white rounded p-4 text-lg hover:bg-green-dark mb-6 focus:outline-none">Buy WP Pusher</button>
+                        <div class="flex items-center justify-center mb-8">
+                            <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M10 20C4.477 20 0 15.523 0 10S4.477 0 10 0s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM8.586 6.586a1 1 0 0 1-1.414-1.414 4 4 0 1 1 5.656 5.657l-2.121 2.119a1 1 0 1 1-1.414-1.416l2.121-2.118a2 2 0 0 0-2.828-2.828zM10 16a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" fill="#548BC5" fill-rule="nonzero"/></svg>
+                            <span class="ml-2 font-bold">Need any help?</span>
+                            <span class="text-grey-darker ml-1">Don’t hesitate to <a href="#" class="text-grey-darker underline">contact support</a>!</span>
+                        </div>
+                        <div class="text-center">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/wppusher_powered_by_stripe.png" alt="stripe">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="w-1/3 bg-blue text-white rounded-r">
+                <div class="p-10">
+                    <h2 class="text-xl font-bold mb-4">Freelancer</h2>
+                    <div class="mb-4">
+                        <span class="text-2xl align-top">$</span>
+                        <span class="text-5xl leading-none">99</span>
+                        <span class="text-lg">/ year</span>
+                    </div>
+                    <p class="w-3/4 leading-normal mb-8">Automatically renews  after 1 year</p>
+                    <ul class="list-reset mb-8">
+                        <li class="flex items-center mb-4">
+                            <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M10 20C4.477 20 0 15.523 0 10S4.477 0 10 0s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM7.707 9.293L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414l-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414z" fill="#B9F5FF" fill-rule="evenodd"/></svg>
+                            <span class="ml-2">Use on 5 client sites</span>
+                        </li>
+                        <li class="flex items-center mb-4">
+                            <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M10 20C4.477 20 0 15.523 0 10S4.477 0 10 0s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM7.707 9.293L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414l-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414z" fill="#B9F5FF" fill-rule="evenodd"/></svg>
+                            <span class="ml-2">Private repositories</span>
+                        </li>
+                        <li class="flex items-center mb-4">
+                            <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M10 20C4.477 20 0 15.523 0 10S4.477 0 10 0s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM7.707 9.293L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414l-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414z" fill="#B9F5FF" fill-rule="evenodd"/></svg>
+                            <span class="ml-2">Email support</span>
+                        </li>
+                    </ul>
+                    <div class="mb-10 pb-2">
+                        <p class="mb-2">Need 20 client sites?</p>
+                        <a href="#" class="text-white font-bold border-b-4 border-blue-light no-underline">Switch to the Agency plan.</a>
+                    </div>
+                    <div class="border-b border-blue-light"></div>
+                    <p class="pt-10 text-lg italic mb-4 leading-normal">FTP is horrible to deal with. <span class="font-bold">WP Pusher</span> solves that issue, and the customer support is awesome!</p>
+                    <div class="flex items-center">
+                        <img class="rounded-full mr-2" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/wppusher_avatar.png" alt="avatar">
+                        <p class="text-lg font-bold">Kirk Beard</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="mb-12">
+        <h1 class="text-center text-grey-dark font-normal text-sm">&copy; 2018 WP Pusher IVS  &middot; <a href="#" class="text-blue no-underline">Terms of Service</a></h1>
+    </footer>
+</div>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <script>
+    Stripe.setPublishableKey('pk_test_iAEnuD7c8xkojnqJfXqs4P6j00mwoK2JKW');
+
+var $form = $('#checkout-form');
+
+$form.submit(function (event) {
+    $('#charge-error').addClass('hidden');
+    $form.find('button').prop('disabled', true);
+    Stripe.card.createToken({
+        number: $('#card-number').val(),
+        cvc: $('#card-cvc').val(),
+        exp_month: $('#card-expiry-month').val(),
+        exp_year: $('#card-expiry-year').val(),
+        name: $('#card-name').val()
+    }, stripeResponseHandler);
+    return false;
+});
+
+function stripeResponseHandler(status, response) {
+    console.log(response.error)
+
+    if (response.error) { // Problem!
+        // Show the errors on the form
+        $('#charge-error').text(response.error);
+        $('#charge-error').removeClass('hidden');
+        $form.find('button').prop('disabled', false); // Re-enable submission
+
+    } else { // Token was created!
+
+        // Get the token ID:
+        var token = response.id;
+
+        // Insert the token into the form so it gets submitted to the server:
+        $form.append($('<input type="hidden" name="stripeToken" />').val(token));
+
+        // Submit the form:
+        $form.get(0).submit();
+
+    }
+}
+    </script>
+</body>
+</html>
+

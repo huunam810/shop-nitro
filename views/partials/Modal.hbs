@@ -1,0 +1,107 @@
+
+<!-- Modal: modalQuickView -->
+<div class="modal fade" id="modalQuickView" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-5">
+            <!--Carousel Wrapper-->
+            <div >
+              <div>
+                <div>
+                  <img class="d-block w-100"
+                    src="" alt="..." id="img-model">
+                </div>
+              </div>
+            </div>
+            <!--/.Carousel Wrapper-->
+          </div>
+          <div class="col-lg-7">
+            <h2 class="h2-responsive product-name">
+              <strong id="title"></strong>
+            </h2>
+            <h4 class="h4-responsive">
+              <span class="grey-text" >
+                  <strong id="price"></strong>
+              </span>
+            </h4>
+            <!--Accordion wrapper-->
+            <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+
+              <!-- Accordion card -->
+              <div class="card_modal">
+
+                <!-- Card header -->
+                <div class="card-header" role="tab" id="headingOne1">
+                  <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne1" aria-expanded="true"
+                    aria-controls="collapseOne1">
+                    <h5 class="mb-0">
+                      Learn more
+                    </h5>
+                  </a>
+                </div>
+
+                <!-- Card body -->
+                <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
+                  data-parent="#accordionEx">
+                  <div class="card-body" id="description">
+                    
+                  </div>
+                </div>
+
+              </div>
+     
+            </div>
+
+            <!-- Add to Cart -->
+            <div class="card-body">
+              
+              <div class="text-center">
+
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                <button href="/add-to-cart/{{this._id}}" class="btn btn-primary">Add to cart
+                  <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                </button>
+                
+              </div>
+            </div>
+            <!-- /.Add to Cart -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+// Material Select Initialization
+$(document).ready(function() {
+$('.mdb-select').materialSelect();
+});
+
+</script>
+
+<script type="text/javascript">
+
+
+            $(document).on("click", ".open-Dialog", function (e) {
+
+                e.preventDefault();
+
+                var _self = $(this);
+
+                var src = _self.data('src');
+                var des = _self.data('des');
+                var price = _self.data('price');
+                var title = _self.data('title');
+                $("#description").text(des);
+                $("#img-model").attr("src", src);
+                $("#price").text(price);
+                $("#title").text(title);
+                $(_self.attr('href')).modal('show');
+                });
+</script>

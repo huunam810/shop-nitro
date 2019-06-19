@@ -1,0 +1,39 @@
+{
+  "name": "shop-nitro",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "bootstrap": "file:bootstrap",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^2.0.3",
+    "cookie-parser": "~1.4.4",
+    "csurf": "^1.10.0",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "express-handlebars": "^3.0.2",
+    "express-session": "^1.16.1",
+    "express-validator": "^5.3.1",
+    "hbs": "~4.0.4",
+    "http-errors": "~1.6.3",
+    "mdbootstrap": "^4.8.1",
+    "mongoose": "^5.5.6",
+    "morgan": "~1.9.1",
+    "multer": "^1.4.1",
+    "passport": "^0.4.0",
+    "passport-facebook": "^3.0.0",
+    "passport-google": "^0.3.0",
+    "passport-google-oauth": "^2.0.0",
+    "passport-local": "^1.0.0",
+    "peer": "^0.2.10",
+    "react-bootstrap-table": "^4.3.1",
+    "stripe": "^6.34.0"
+  },
+  "devDependencies": {
+    "install-peers": "^1.0.3",
+    "nodemon": "^1.19.1"
+  }
+}

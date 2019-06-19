@@ -1,0 +1,756 @@
+<style>
+
+
+.vh {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.fade-screen {
+  background: rgba(0, 0, 0, 0.2);
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+@keyframes specialFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+  }
+}
+.specialFadeIn {
+  animation-name: specialFadeIn;
+}
+
+@keyframes specialFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+.specialFadeOut {
+  animation-name: specialFadeOut;
+}
+
+@keyframes specialSlideInRight {
+  from {
+    transform: translate3d(10%, 0, 0);
+    visibility: visible;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+.specialSlideInRight {
+  animation-name: specialSlideInRight;
+}
+
+@keyframes specialFadeInRight {
+  from {
+    opacity: 0;
+    transform: translate3d(10%, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.spceialFadeInRight {
+  animation-name: specialFadeInRight;
+}
+
+.menu-search-container.active {
+  display: block;
+  animation-name: specialFadeOut;
+  transition: opacity 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.visible {
+  visibility: visible;
+}
+
+.hidden {
+  display: none;
+  transition: opacity 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.menu ul li {
+  transition: opacity 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.menu-mac.is-closed {
+  animation-name: specialFadeIn;
+  animation-delay: 30ms;
+  animation-duration: 400ms;
+  animation-fill-mode: both;
+}
+.menu-mac.hidden {
+  animation-name: specialFadeOut;
+  animation-delay: 245ms;
+  animation-duration: 400ms;
+  animation-fill-mode: both;
+}
+
+.menu-iPad.is-closed {
+  animation-name: specialFadeIn;
+  animation-delay: 70ms;
+  animation-duration: 400ms;
+  animation-fill-mode: both;
+}
+.menu-iPad.hidden {
+  animation-name: specialFadeOut;
+  animation-delay: 210ms;
+  animation-duration: 400ms;
+  animation-fill-mode: both;
+}
+
+.menu-iPhone.is-closed {
+  animation-name: specialFadeIn;
+  animation-delay: 100ms;
+  animation-duration: 400ms;
+  animation-fill-mode: both;
+}
+.menu-iPhone.hidden {
+  animation-name: specialFadeOut;
+  animation-delay: 170ms;
+  animation-duration: 400ms;
+  animation-fill-mode: both;
+}
+
+.menu-watch.is-closed {
+  animation-name: specialFadeIn;
+  animation-delay: 130ms;
+  animation-duration: 400ms;
+  animation-fill-mode: both;
+}
+.menu-watch.hidden {
+  animation-name: specialFadeOut;
+  animation-delay: 130ms;
+  animation-duration: 400ms;
+  animation-fill-mode: both;
+}
+
+.menu-tv.is-closed {
+  animation-name: specialFadeIn;
+  animation-delay: 170ms;
+  animation-duration: 400ms;
+  animation-fill-mode: both;
+}
+.menu-tv.hidden {
+  animation-name: specialFadeOut;
+  animation-delay: 100ms;
+  animation-duration: 400ms;
+  animation-fill-mode: both;
+}
+
+.dropdown.is-closed {
+  animation-name: specialFadeIn;
+  animation-delay: 210ms;
+  animation-duration: 400ms;
+  animation-fill-mode: both;
+}
+.dropdown.hidden {
+  animation-name: specialFadeOut;
+  animation-delay: 70ms;
+  animation-duration: 400ms;
+  animation-fill-mode: both;
+}
+
+.menu-search.is-closed {
+  animation-name: specialFadeIn;
+  animation-delay: 245ms;
+  animation-duration: 400ms;
+  animation-fill-mode: both;
+}
+.menu-search.hidden {
+  animation-name: specialFadeOut;
+  animation-delay: 30ms;
+  animation-duration: 400ms;
+  animation-fill-mode: both;
+}
+
+.menu-store.is-closed {
+  animation-name: specialFadeIn;
+  animation-duration: 400ms;
+  animation-fill-mode: both;
+}
+.menu-store.hidden {
+  animation-name: specialFadeOut;
+  animation-duration: 400ms;
+  animation-fill-mode: both;
+}
+
+.menu-search-input {
+  animation-name: specialFadeInRight;
+  animation-duration: 400ms;
+  animation-fill-mode: both;
+  animation-delay: 350ms;
+}
+
+.search-sub-menu h3 {
+  animation-name: specialFadeInRight;
+  animation-duration: 700ms;
+  animation-fill-mode: both;
+}
+
+.search-sub-menu ul li {
+  animation-name: specialFadeInRight;
+  animation-duration: 500ms;
+  animation-fill-mode: both;
+}
+.search-sub-menu ul li:nth-child(1) {
+  animation-delay: 0ms;
+}
+.search-sub-menu ul li:nth-child(2) {
+  animation-delay: 30ms;
+}
+.search-sub-menu ul li:nth-child(3) {
+  animation-delay: 50ms;
+}
+.search-sub-menu ul li:nth-child(4) {
+  animation-delay: 70ms;
+}
+.search-sub-menu ul li:nth-child(5) {
+  animation-delay: 90ms;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 48px;
+  min-width: 1024px;
+  background: rgba(0, 0, 0, 0.8);
+  font-size: 18px;
+  z-index: 2;
+}
+
+.menu-container {
+  position: relative;
+  margin: 0 auto;
+  margin-top: 10px;
+  max-width: fit-content;
+  padding: 0 22px;
+  opacity: 0.9;
+}
+.menu-container ul {
+  list-style: none;
+}
+.menu-container ul li {
+  display: inline-block;
+  text-align: center;
+  width: auto;
+  margin-right: 80px;
+}
+.menu-container ul li:last-child {
+  margin-right: 0;
+}
+.menu-container ul li a {
+  display: inline-block;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 100;
+  font-size: 16px;
+  float: left;
+}
+.menu-container ul li a:hover {
+  color: #969696;
+}
+.menu-container.menu-apple {
+  background-repeat: no-repeat;
+  width: 20px;
+}
+
+.apple-icon {
+  font-size: 20px;
+}
+
+.menu-search-container {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 20.6667%;
+  width: 56.66667%;
+  z-index: 2;
+}
+.menu-search-container input {
+  background-color: transparent;
+  border: none;
+  width: 80%;
+  font-size: 16px;
+  outline: none;
+  color: #fff;
+}
+.menu-search-container a {
+  color: #fff;
+}
+.menu-search-container a:first-child {
+  display: block;
+  float: left;
+  padding-right: 10px;
+}
+.menu-search-container.active {
+  display: block;
+}
+
+.menu-search-close {
+  position: absolute;
+  right: -183px;
+  top: 0;
+}
+
+.search-sub-menu {
+  background: #fff;
+  width: 100%;
+  margin-top: 14px;
+  color: #999;
+  font-weight: 100;
+  padding: 24px 0 15px;
+  z-index: 1;
+}
+.search-sub-menu h3 {
+  font-size: 12px;
+  font-weight: 100;
+  margin-top: 0;
+  padding-left: 28px;
+}
+.search-sub-menu ul {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+.search-sub-menu ul li {
+  display: block;
+  text-align: left;
+  padding-bottom: 10px;
+  margin: 0;
+  text-indent: 50px;
+}
+.search-sub-menu ul li a {
+  font-size: 14px;
+  color: #999;
+  width: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.search-sub-menu ul li a:hover {
+  background-color: #f2f2f2;
+  color: #3392de;
+}
+.search-sub-menu ul li a:first-child {
+  float: none;
+  padding-right: 0;
+}
+
+</style>
+
+
+<header>
+<nav>
+  <div class="menu-container">
+    
+    <!-- Menu -->
+    <ul class="menu">
+      <li class="menu-apple">
+        <a href="/">
+          <i class="fa fa-apple apple-icon" aria-hidden="true"></i>
+        </a>
+      </li>
+      <li class="menu-mac">
+        <a href="/types/Mac">
+          <span>Mac</span>
+        </a>
+      </li>
+      <li class="menu-iPad">
+        <a href="/types/iPad">
+          <span>iPad</span>
+        </a>
+      </li>
+      <li class="menu-iPhone">
+        <a href="/types/iPhone">
+          <span>iPhone</span>
+        </a>
+      </li>
+      <li class="menu-watch">
+        <a href="/types/Watch">
+          <span>Watch</span>
+        </a>
+      </li>
+      <li class="menu-tv">
+        <a href="/about">
+          <span>About</span>
+        </a>
+      </li>
+      <li class="menu-search">
+        <a href="#">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </a>
+      </li>
+      <li class="menu-store">
+        <a href="/shopping-cart">
+          <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+          <span class="badge">{{session.cart.totalQty}}</span>
+        </a>
+      </li>
+      
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-user" aria-hidden="true"></i></a>
+          <ul class="dropdown-menu " x-placement="bottom-start" 
+style="position: absolute;will-change: transform;background-color: rgb(51, 51, 51);box-shadow: black 0px 0px 9px 3px;top: 10px;left: -50px;transform: translate3d(-5px, 24px, 0px);">             
+            {{# if login }}
+              <li><a href="/user/profile">User Account</a></li>
+              <li><a href="/user/logout">Logout</a></li>
+            {{ else }}
+              <li><a href="/user/signup">Sign up</a></li>
+              <li><a href="/user/signin">Sign in</a></li>
+            {{/if}}  
+          </ul>
+        </li>
+    </ul>
+    
+    <!-- Search -->
+    <div class="menu-search-container">
+      <div class="menu-search-input">
+      <form action="">
+        <a href="#">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </a>
+        <input aria-label="Search" class="menu-search-input" type="text" onkeyup="showResults(this.value)" aria-label="Search apple.com" placeholder="Search apple.com" autocorrect="off" autocapitalize="off" autocomplete="off" spellcheck="false">
+      </form>
+      </div>
+      <a class="menu-search-close" href="#">
+        <i class="fa fa-close" aria-hidden="true"></i>
+      </a> 
+      <div class="search-sub-menu">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#">Find a store</a></li>
+        <li><a href="#">Accessories</a></li>
+        <li><a href="#">iPod</a></li>
+        <li><a href="#">iOS</a></li>
+        <li><a href="#">Gift Cards</a></li>
+      </ul>
+    </div>
+    </div>
+    
+  </div>
+  
+</nav>
+{{!-- <div class="overlay"></div>
+  <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+    <source src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4" type="video/mp4">
+  </video>
+  <div class="container h-100">
+    <div class="d-flex h-100 text-center align-items-center">
+      <div class="w-100 text-white">
+        <h1 class="display-3">Video Header</h1>
+        <p class="lead mb-0">With HTML5 Video and Bootstrap 4</p>
+      </div>
+    </div>
+  </div> --}}
+</header>
+<div class="fade-screen"></div>
+
+<script>
+  var showResults = debounce(function(arg) {
+    var value = arg.trim();
+    if (value == "" || value.length <= 0) {
+      $("#search-results").fadeOut();
+      return;
+    }
+    else{
+      $("#search-results").fadeIn();
+    };
+    var jqxhr = $.get('/xhr/search?q=' + value, function(data) {
+      $("#search-results").html("");
+    })
+    
+      .done(function(data) {
+        if(data.length === 0) {
+          $("#search-results").append('<p class="lead text-center mt-2">No results</p>');
+        } else {
+          data.forEach(x => {
+            $("#search-results").append('<a href="#"><p class="lead mt-2"><img style="width:60px;" src="images/1.png" >' + x.title + '</p> </a>');
+          });          
+        }
+      })
+      .fail(function(err) {
+        console.log(err);
+      })
+  }, 200);
+
+  function debounce(func, wait, immediate) {
+    var timeout;
+    return function() {
+      var context = this,
+        args = arguments;
+      var later = function () {
+        timeout = null;
+        if(!immediate) func.apply(context, args);
+      };
+      var callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if(callNow) func.apply(context, args);
+    };
+  };
+</script>
+<script>
+
+(function() {
+
+  'use strict';
+  
+  var $searchView = $('.menu-search-container');
+  var $menu = $('.menu-mac, .menu-iPad, .menu-iPhone, .menu-watch, .menu-tv, .dropdown, .menu-search, .menu-store');
+  var $fadeScreen = $('.fade-screen');
+  
+  $('li.menu-search a, .fade-screen, .menu-search-close').on('click', function(e) {
+    
+    $searchView.toggleClass('active');
+    
+    setTimeout(function(){
+      $searchView.children().find('input').focus();
+    }, 1100);
+    
+    $fadeScreen.toggleClass('visible');
+    $menu.removeClass('is-closed');
+    $menu.toggleClass('hidden');
+    
+    e.preventDefault();
+  });
+  
+  $('.fade-screen,.menu-search-close').on('click', function(e) {
+    $menu.toggleClass('is-closed');
+    e.preventDefault();
+  });
+    
+}())
+  
+</script>
+
+{{!-- video --}}
+{{!-- <style>
+
+header {
+  position: relative;
+  background-color: black;
+  height: 75vh;
+  min-height: 25rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+header video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 0;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+header .container {
+  position: relative;
+  z-index: 2;
+}
+
+header .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.5;
+  z-index: 1;
+}
+
+@media (pointer: coarse) and (hover: none) {
+  header {
+    background: url('https://source.unsplash.com/XT5OInaElMw/1600x900') black no-repeat center center scroll;
+  }
+  header video {
+    display: none;
+  }
+}
+
+</style> --}}
+
+
+  {{!-- <head>
+    <title>
+      Apple
+    </title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+      <header id="mainHeader">
+        <nav id="mainNav" class="screen">
+        <ul id="menuListItems">
+            <li class="menuItems"><a href="#"><span id="appleLogo">Apple Logo</span></a></li>
+            <li class="menuItems"><a href="#">Mac</a></li>
+            <li class="menuItems"><a href="#">iPad</a></li>
+            <li class="menuItems"><a href="#">iPhone</a></li>
+            <li class="menuItems"><a href="#">Watch</a></li>
+            <li class="menuItems"><a href="#">TV</a></li>
+            <li class="menuItems"><a href="#">Music</a></li>
+            <li class="menuItems"><a href="#">Support</a></li>
+            <li class="menuItems"><a href="#"><span id="search">Search</span></a></li>
+            <li class="menuItems"><a href="#"><span id="bag">Bag</span></a></li>
+            </ul>
+        </nav>
+        </header>
+    <div class="slideshow-container">
+      <div class="mySlides fade">
+        <img src="https://media.idownloadblog.com/wp-content/uploads/2016/09/iPhone-7-jet-black-back-camera.jpg">
+        <div class="text text-color"><b>iPhone</b><br>This is 7.</div>
+      </div>
+      <div class="mySlides fade">
+        <img src="https://media.idownloadblog.com/wp-content/uploads/2016/09/iPhone-7-jet-black-back-camera.jpg">
+        <div class="text"><b>Watch</b><br>SERIES 2</div>
+      </div>
+      <div id="mackbook" class="mySlides fade">
+          <img src="https://media.idownloadblog.com/wp-content/uploads/2016/09/iPhone-7-jet-black-back-camera.jpg">
+        <div class="text"><b>MacBook Pro</b><br>A touch of genius</div>
+      </div>
+    </div>
+    <br>
+    <div class="line-box">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+    <script>
+          var slideIndex = 0;
+      showSlides();
+
+      function showSlides() {
+          var i;
+          var slides = document.getElementsByClassName("mySlides");
+          var line = document.getElementsByClassName("line");
+          for (i = 0; i < slides.length; i++) {
+             slides[i].style.display = "none";  
+          }
+          slideIndex++;
+          if (slideIndex> slides.length) {slideIndex = 1}    
+          for (i = 0; i < line.length; i++) {
+              line[i].className = line[i].className.replace(" active", "");
+          }
+          slides[slideIndex-1].style.display = "block";  
+          line[slideIndex-1].className += " active";
+          setTimeout(showSlides, 3000); 
+      }
+    </script>
+    <div class="grid">
+      <div class="row row-img-first"></div>
+      <div class="row row-img-second"></div>
+      <div class="row row-img-third"></div>
+      <div class="row row-img-fourth"></div>
+    </div>
+    <footer>
+      <div class="footer">
+        <div class="footer-box">
+          <h1>Shop and Learn</h1>
+          <ul>
+            <li>Mac</li>
+            <li>iPad</li>
+            <li>iPhone</li>
+            <li>Watch</li>
+            <li>TV</li>
+            <li>Music</li>
+            <li>iTunes</li>
+            <li>iPod</li>
+            <li>Accessories</li>
+            <li>Gift Cards</li>
+          </ul>
+        </div>
+        <div class="footer-box">
+        <h1>Apple Store</h1>
+        <ul>
+          <li>Find a Store</li>
+          <li>Genius Bar</li>
+          <li>Workshops and Learning</li>
+          <li>Youth Programs</li>
+          <li>Apple Store App</li>
+          <li>Refurbished and Clearance</li>
+          <li>Financing</li>
+          <li>Reuse and Recycling</li>
+          <li>Order Status</li>
+          <li>Shopping Help</li>
+        </ul>
+        </div>
+        <div class="footer-box">
+          <h1>About Apple</h1>
+          <ul>
+            <li>Apple Info</li>
+            <li>Newsroom</li>
+            <li>Job Opportunities</li>
+            <li>Press Info</li>
+            <li>Investors</li>
+            <li>Events</li>
+            <li>Contact Apple</li>
+          </ul>
+        </div>
+        <div class="footer-box">
+          <h1>For Bussiness</h1>
+          <ul>
+            <li>Apple and Bussiness</li>
+            <li>Shop for Business</li>
+          </ul>
+        </div>
+        <div class="footer-box">
+          <h1>Apple Values</h1>
+          <ul>
+            <li>Accessibility</li>
+            <li>Education</li>
+            <li>Enviroment</li>
+            <li>Inclusion and Diversity</li>
+            <li>Privacy</li>
+            <li>Supplier Responsibility</li>
+          </ul>
+        </div>
+        <div class="footer-line margin-first-line">
+          More ways to shop: Visit an <a class="shop" href="#">Apple Store</a>, call 1-800-MY-APPLE or <a class="shop" href="#">Find a reseller</a>
+        </div>
+        <div class="footer-line margin-second-line">
+          Copyright &copy; 2017 Apple Inc. All Rights Reserved
+          <ul>
+            <li>Privacy Policy</li>
+            <li>Terms of Use</li>
+            <li>Sales and Refund</li>
+            <li>Legal</li>
+            <li>Site Map</li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </body> --}}

@@ -1,0 +1,871 @@
+
+
+{{!-- <form action="/product" method="POST" autocomplete="off" enctype="multipart/form-data">
+  <input type="hidden" name="_id" value="{{product._id}}">
+  <label>
+    <p class="label-txt">imagePath</p>
+    <input type="file" class="input" name="imagePath"  value="{{product.imagePath}}">
+    <div class="line-box">
+      <div class="line"></div>
+    </div>
+  </label>
+  <label>
+    <p class="label-txt">title</p>
+    <input type="text" class="input" name="title" value="{{product.title}}">
+    <div class="line-box">
+      <div class="line"></div>
+    </div>
+  </label>
+  <label>
+    <p class="label-txt">price</p>
+    <input type="text" class="input" name="price" value="{{product.price}}">
+    <div class="line-box">
+      <div class="line"></div>
+    </div>
+  </label>
+  <label>
+    <p class="label-txt">description</p>
+    <input type="text" class="input" name="description" value="{{product.description}}">
+    <div class="line-box">
+      <div class="line"></div>
+    </div>
+  </label>
+  <label>
+    <p class="label-txt">type</p>
+    <input type="text" class="input" name="type" value="{{product.type}}">
+    <div class="line-box">
+      <div class="line"></div>
+    </div>
+  </label>
+  <button type="submit">Submit</button>
+</form>
+
+ <style>
+
+
+
+body {
+  background: #333333;
+}
+form {
+  width: 60%;
+  margin: 60px auto;
+  background: #efefef;
+  padding: 60px 120px 80px 120px;
+  text-align: center;
+  -webkit-box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
+  box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
+}
+label {
+  display: block;
+  position: relative;
+  margin: 40px 0px;
+}
+.label-txt {
+  position: absolute;
+  top: -1.6em;
+  padding: 10px;
+  font-family: sans-serif;
+  font-size: .8em;
+  letter-spacing: 1px;
+  color: rgb(120,120,120);
+  transition: ease .3s;
+}
+.input {
+  width: 100%;
+  padding: 10px;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.line-box {
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background: #BCBCBC;
+}
+
+.line {
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333333;
+  transition: ease .6s;
+}
+
+.input:focus + .line-box .line {
+  width: 100%;
+}
+
+.label-active {
+  top: -3em;
+}
+
+button {
+  display: inline-block;
+  padding: 12px 24px;
+  background: rgb(220,220,220);
+  font-weight: bold;
+  color: rgb(120,120,120);
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: ease .3s;
+}
+
+button:hover {
+  background: #333333;
+  color: #ffffff;
+}
+
+
+ </style>
+
+ <script>
+
+$(document).ready(function(){
+
+  $('.input').focus(function(){
+    $(this).parent().find(".label-txt").addClass('label-active');
+  });
+
+  $(".input").focusout(function(){
+    if ($(this).val() == '') {
+      $(this).parent().find(".label-txt").removeClass('label-active');
+    };
+  });
+
+});
+
+ </script> --}}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdn.rawgit.com/creativetimofficial/material-dashboard/31144b3f/assets/css/material-dashboard.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,400">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+  {{!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">  --}}
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+   <script src="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>
+  <title>Document</title>
+  <style>
+    .nav .li-nav{
+      margin: 30px 45px;
+    }
+    
+  </style>
+  <style>
+form {
+  width: 85%;
+  margin: -1px auto;
+  background-color: #e6e4e36b;
+  box-shadow: 0 0 9px 0px black;
+  padding: 20px;
+  text-align: center;
+  
+}
+label {
+  display: block;
+  position: relative;
+  margin: 40px 0px;
+}
+.label-txt {
+  position: absolute;
+  top: -1.6em;
+  padding: 10px;
+  font-family: sans-serif;
+  font-size: .8em;
+  letter-spacing: 1px;
+  color: rgb(120,120,120);
+  transition: ease .3s;
+}
+.input {
+  width: 100%;
+  padding: 10px;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.line-box {
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background: #BCBCBC;
+}
+
+.line {
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333333;
+  transition: ease .6s;
+}
+
+.input:focus + .line-box .line {
+  width: 100%;
+}
+
+.label-active {
+  top: -3em;
+}
+
+button {
+  display: inline-block;
+  padding: 12px 24px;
+  background: rgb(220,220,220);
+  font-weight: bold;
+  color: rgb(120,120,120);
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: ease .3s;
+}
+
+button:hover {
+  background: #333333;
+  color: #ffffff;
+}
+
+
+ </style>
+ 
+</head>
+<body>
+  <div class="wrapper ">
+    <div class="sidebar" data-color="danger" data-background-color="white">
+      <div class="logo">
+        <a href="#" class="simple-text logo-normal">
+          Admin Panel 
+        </a>
+      </div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+          	<li class="nav-item active  ">
+            
+            <a class="nav-link" href="#">
+              <i class="material-icons">add_shopping_cart</i>
+              <p class="text"  style="font-size: 20px;margin: 0px 57px;">Product</p>                              
+            </a>
+			 <li class="li-nav">
+				 <i class="material-icons" style="margin: -2px -15px;">add_circle_outline</i>
+				<a class="a-nav" href="/product" style="font-size: 20px;">
+    
+					New Product
+				</a>
+			</li>
+			<li class="li-nav">
+				<i class="material-icons" style="margin: -2px -15px;">mode_edit</i>
+				<a class="a-nav" href="/product/add" style="font-size: 20px;">
+    
+					Edit Product
+				</a>
+			</li>
+			</li>
+              
+            <hr>
+
+			<li class="nav-item active  ">
+            <a class="nav-link" href="#">
+              <i class="material-icons">account_circle</i>
+              <p class="text"  style="font-size: 20px;margin: 0px 71px;">User</p>                              
+            </a>
+			 <li class="li-nav">
+				<a class="a-nav" href="#" style="font-size: 20px;">
+				<i class="material-icons" style="margin: -2px -15px;">perm_contact_calendar</i>   
+					My Profile
+				</a>
+			</li>
+			<li class="li-nav">
+				<i class="material-icons" style="margin: -2px -15px;">add_circle_outline</i>
+				<a class="a-nav" href="#" style="font-size: 20px;">   
+					New Account
+				</a>
+			</li>
+			<li class="li-nav">
+				<i class="material-icons" style="margin: -2px -15px;">mode_edit</i>
+				<a class="a-nav" href="/admin/user/list" style="font-size: 20px;">   
+					Edit Accounts
+				</a>
+			</li>
+			</li>
+        </ul>
+      </div>
+      <div class="sidebar-background" style="background-image: url('/images/WWDC.png') "></div>
+    </div>
+ 
+    <div class="main-panel">
+        <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <a class="navbar-brand" href="#pablo">Dashboard</a>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav">
+             
+              <li class="nav-item">
+                <a class="nav-link" href="admin/logout">
+                  <i class="material-icons">forward</i>
+                  <p class="d-lg-none d-md-block">
+                    Account
+                  </p>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="content text-center">
+        <form action="/product" method="POST" autocomplete="off" enctype="multipart/form-data">
+  <input type="hidden" name="_id" value="{{product._id}}">
+  
+  <label>
+    <p class="label-txt">imagePath</p>
+    <input type="file" class="input" name="imagePath">
+    
+  </label>
+  <label>
+    <p class="label-txt">title</p>
+    <input type="text" class="input" name="title" value="{{product.title}}">
+    <div class="line-box">
+      <div class="line"></div>
+    </div>
+  </label>
+  <label>
+    <p class="label-txt">price</p>
+    <input type="text" class="input" name="price" value="{{product.price}}">
+    <div class="line-box">
+      <div class="line"></div>
+    </div>
+  </label>
+  <label>
+    <p class="label-txt">description</p>
+    <input type="text" class="input" name="description" value="{{product.description}}">
+    <div class="line-box">
+      <div class="line"></div>
+    </div>
+  </label>
+  <label>
+    <p class="label-txt">type</p>
+    <select  type="text" class="input" name="type" value="{{product.type}}">
+          <option value=""></option>
+          <option value="Mac">Mac</option>
+          <option value="iPad">iPad</option>
+          <option value="iPhone">iPhone</option>
+          <option value="Watch">Watch</option>
+        </select>
+    <div class="line-box">
+      <div class="line"></div>
+    </div>
+  </label>
+  <button type="submit">Submit</button>
+</form>
+
+        </form>
+      </div>
+        
+    </div>
+  </div>
+  <script>
+
+$(document).ready(function(){
+
+  $('.input').focus(function(){
+    $(this).parent().find(".label-txt").addClass('label-active');
+  });
+
+  $(".input").focusout(function(){
+    if ($(this).val() == '') {
+      $(this).parent().find(".label-txt").removeClass('label-active');
+    };
+  });
+
+});
+
+ </script>
+ 
+</body>
+</html>
+
+
+
+ {{!-- <!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.min.css" rel="stylesheet">
+   <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.min.js"></script>
+   <title>Document</title>
+   <style>
+     .box-form {
+  margin-top: 2rem;
+}
+
+/* Material Design Style */
+.material .material-input {
+  position: relative;
+  padding-top: 18px;
+  margin-bottom: 1rem;
+  background: transparent;
+}
+
+.material .material-input:after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+.material .material-input input,
+.material .material-input textarea {
+  font-size: 16px;
+  width: 100%;
+  outline: none;
+  background: 0;
+  float: left;
+  display: block;
+  width: 100%;
+  box-sizing: none !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid #999 !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+  transition: none !important;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.material .material-input input:focus,
+.material .material-input textarea:focus {
+  border-bottom: 1px solid #333 !important;
+}
+
+.material .material-input textarea {
+  height: 120px;
+  padding: 7px 0;
+}
+
+.material .material-input input {
+  height: 32px;
+}
+
+.material .material-input label {
+  line-height: 32px;
+}
+.material .material-input label:hover {
+  cursor: auto;
+}
+
+.material .material-input label {
+  color: #999;
+  font-size: 16px;
+  font-weight: 300;
+  position: absolute;
+  left: 0;
+  top: 18px;
+}
+
+.material .material-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+}
+
+.material .material-bar:before,
+.material .material-bar:after {
+  content: "";
+  height: 2px;
+  width: 0;
+  bottom: 0;
+  position: absolute;
+  background: #333;
+}
+
+.material .material-bar:before {
+  left: 50%;
+}
+
+.material .material-bar:after {
+  right: 50%;
+}
+
+.material .material-input :focus ~ .material-bar:before,
+.material .material-input :focus ~ .material-bar:after,
+.material .error ~ .material-bar:before,
+.material .error ~ .material-bar:after {
+  width: 50%;
+}
+
+.material .error ~ .material-bar:before,
+.material .error ~ .material-bar:after,
+.material .error ~ .material-bar:before,
+.material .error ~ .material-bar:after {
+  background: #ff0000;
+}
+
+.material .error:focus,
+.material .error.filled,
+.material .error:not(.filled) ~ label {
+  color: red;
+}
+
+.material .material-input :focus ~ label,
+.material .material-input .filled ~ label,
+.material .error:focus ~ label {
+  color: #999;
+  font-size: 12px;
+  top: 0;
+  line-height: 24px;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+/* Radio */
+.material .material-group {
+  padding-top: 10px;
+}
+
+.material .material-group input {
+  display: none;
+}
+
+.material .material-group-item {
+  position: relative;
+  margin-bottom: 5px;
+}
+
+.material .material-group-item:last-child {
+  margin-bottom: 0;
+}
+
+.material .material-group label {
+  padding-left: 30px;
+  position: relative;
+  cursor: pointer;
+  z-index: 2;
+  font-weight: 300;
+}
+
+.material .material-checkbox,
+.material .material-radio {
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  left: 0;
+  top: 50%;
+  margin-top: -9px;
+  position: absolute;
+  z-index: 1;
+  border: 2px solid gray;
+}
+
+.material .material-radio {
+  border-radius: 10px;
+}
+
+.material .material-checkbox {
+  border-radius: 3px;
+}
+
+.material .material-checkbox:before {
+  content: "a";
+  font-size: 14px;
+  text-align: center;
+  padding-top: 3px;
+  color: #fff;
+  background: gray;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -ms-transform: scale(0);
+  -o-transform: scale(0);
+  transform: scale(0);
+}
+
+.material .material-radio:before {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background: grey;
+  content: "";
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -ms-transform: scale(0);
+  -o-transform: scale(0);
+  transform: scale(0);
+}
+
+.material input:checked ~ .material-radio:before,
+.material input:checked ~ .material-checkbox:before {
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+}
+
+/* Select */
+.material .material-select {
+  font-size: 16px;
+  font-weight: 300;
+  width: 100%;
+  position: relative;
+  margin-bottom: 1rem;
+  padding-top: 10px;
+  z-index: 3;
+}
+
+.material .material-select input {
+  display: none;
+}
+
+.material .material-select > label {
+  color: #999;
+  border-bottom: 1px solid #999;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 30px 0 0px;
+  width: 100%;
+  cursor: pointer;
+  position: relative;
+  display: block;
+  font-size: 16px;
+}
+
+.material .material-select > .material-title {
+  position: absolute;
+  color: #999;
+  height: 40px;
+  line-height: 40px;
+  top: 18px;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.material .material-select.filled > label {
+  color: #333;
+}
+
+.material .material-select > input:checked + .material-title,
+.material .material-select.filled > .material-title {
+  top: 0;
+  opacity: 1;
+  visibility: visible;
+  font-size: 14px;
+  line-height: 15px;
+  color: #999;
+}
+
+.material .material-select > label strong {
+  border-color: gray transparent transparent transparent;
+  border-style: solid;
+  border-width: 6px 5px 0 5px;
+  font-size: 16px;
+  width: 0;
+  height: 0;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  color: #333;
+}
+
+.material .material-select > input:checked ~ ul {
+  visibility: visible;
+  opacity: 1;
+  top: 0;
+}
+
+.material .material-select ul {
+  background: #fff;
+  top: 0;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 2;
+  margin-left: 0;
+  list-style: none;
+}
+
+.material .material-select ul li label {
+  color: gray;
+}
+
+.material .material-select ul li input:checked + label,
+.material .material-select ul li:hover input:checked + label {
+  font-weight: 400;
+}
+
+.material .material-select ul li label {
+  display: block;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  margin-left: 0;
+  margin-right: 0;
+  font-size: 16px;
+}
+
+.material .material-select ul li label:hover {
+  background: #f5f5f5;
+}
+
+.material .material-select > input:checked + .material-bar {
+  top: 22px;
+}
+
+.material .material-select .material-bar {
+  height: 2px;
+  background: #333;
+  width: 0;
+  bottom: auto;
+  top: 56px;
+}
+
+/* Shadow */
+.material .material-select ul {
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Animation */
+.material .material-select ul,
+.material .material-bar:before,
+.material .material-bar:after,
+.material .material-input label,
+.material .material-select .material-bar,
+.material .material-select > span,
+.material .material-radio:before,
+.material .material-checkbox,
+.material .material-checkbox:before,
+.material .material-checkbox:after {
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  -moz-transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  -webkit-transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Disable select */
+.material {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Material border box reset */
+.material *,
+.material *:before,
+.material *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+   </style>
+ </head>
+ <body>
+   <div class="box-form">
+<form class="row align-center material" name="register" id="register" action="/product" method="POST" autocomplete="off">
+			<div class="small-12 medium-6 columns small-centered">
+				<div class="row">
+					<div class="small-12 columns">    
+					      <input type="text" class="input" name="title" value="{{product.title}}" placeholder="Title">
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-12 columns">    
+					      <input type="text" required name="name" placeholder="Username">
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-12 columns">    
+					      <input type="password" required name="password" placeholder="Password">
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-12 columns">    
+					      <input type="password" required name="confirm_password" placeholder="Confirm Password">
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-12 columns">
+		                <select name="MySelect" placeholder="Favourite">
+		                    <option value="0">Jelly Bean</option>
+		                    <option value="1">Ice Cream</option>
+		                    <option value="2">Pizza</option>
+		                    <option value="3">Sushi</option>
+		                    <option value="4">Beer</option>
+		                    <option value="5">Steak</option>
+		                </select>
+		            </div>
+				</div>
+				<div class="row">
+					<div class="small-12 columns">    
+					      <input type="text" required name="phone" placeholder="Phone">
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-12 columns">    
+					      <input type="text" name="address" placeholder="Address">
+					</div>
+				</div>
+			</div>
+		</form>
+  <div class="row">
+    <div class="small-12 medium-6 small-centered columns">
+				<button class="button expanded success" type="button">Register</button>
+			</div>
+  </div>
+</div>
+<script>
+  $(function(){$.fn.hasAttr=function(e){var t=this.attr(e);if(typeof t!==typeof undefined&&t!==false)return true;return false};$.fn.materialForm=function(){function e(e){var t=e.attr("type");return t!="hidden"&&t!="submit"&&t!="checkbox"&&t!="radio"&&t!="file"?1:0}function t(e){if(e.val())e.addClass("filled");else e.removeClass("filled")}this.find("input, textarea").each(function(){if(e($(this))){var n=$(this).attr("name");$(this).attr("id",n);var r=$(this).wrap("<div class='material-input'></div>").parent();r.append("<span class='material-bar'></span>");var i=$(this).prop("tagName").toLowerCase();r.addClass(i);var s=$(this).attr("placeholder");if(s){r.append("<label for='"+n+"'>"+s+"</label>");$(this).removeAttr("placeholder")}t($(this))}});this.find("input, textarea").on("blur",function(){if(e($(this)))t($(this))});this.find("select").each(function(e){var t=$(this).attr("placeholder");var n=$(this).attr("multiple")?"checkbox":"radio";var r=id=$(this).attr("name");var i=$(this).wrap("<div class='material-select'></div>").parent();if(n=="checkbox"){r+="[]";var s=$('<span class="material-bar"></span>');i.append(s).addClass("checkbox")}else{var o=$('<span class="material-title">'+t+"</span>");i.prepend(o)}var u=$('<label for="select-'+e+'"><span>'+t+"</span><strong></strong></label>");var a=$('<input type="checkbox" id="select-'+e+'">');i.prepend(a);i.prepend(u);var f=$('<ul class="'+n+'"></ul>');i.append(f);var l=0;var c=$(this).children("option").length;var h;$(this).children("option").each(function(e){var t=$(this).text();var i=$(this).val();var s=$(this).hasAttr("selected");var o=$("<li></li>");f.append(o);var u=$('<label for="'+id+"-"+e+'">'+t+"</label>");var a=$('<input type="'+n+'" value="'+i+'" name="'+r+'" id="'+id+"-"+e+'">');if(s){h=a.prop("checked",true);l++}o.append(a);o.append(u)});if(s){var p=l/c*100;s.width(p+"%")}else{if(l){u.children("span").text(h.next("label").text());i.addClass("filled")}}$(this).remove()});$(document).on("click",function(e){if($(e.target).closest(".material-select").length===0){$(".material-select > input").prop("checked",false)}});$(".material-select > input").on("change",function(){var e=$(this).attr("id");$(".material-select > input").each(function(){var t=$(this).attr("id");if(e!=t)$(this).prop("checked",false)})});$(".material-select ul input").on("change",function(){if($(this).closest(".material-select.checkbox").length){var e=$(this).closest("ul");var t=e.find("input").length;var n=e.find("input:checked").length;var r=n/t*100;$(this).closest(".material-select").find(".material-bar").width(r+"%")}else{var i=$(this).closest(".material-select");var s=i.children("label").children("span");var o=$(this).next("label");s.text(o.text());i.children("input").prop("checked",false);i.addClass("filled")}})}})
+
+$(function(){
+  $('form.material').materialForm(); // Apply material
+  // $('form').validate({ 
+  //   errorPlacement: function(error, element) {}
+  // }); // Apply validator with no error messages but classes only
+});
+</script>
+ </body>
+ </html> --}}

@@ -1,0 +1,841 @@
+{{!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Fredericka+the+Great|Lato:300,400,700,900" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <style>
+html,
+body {
+  font-family: 'Lato', Arial;
+}
+
+button {
+  outline: 0 !important;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 70px;
+  font-family: 'Fredericka The Great', Arial;
+}
+
+header {
+  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/791586/header.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+h2 {
+  font-family: 'Amatic SC', Arial;
+  display: inline-block;
+  font-size: 40px;
+  border-bottom: 2px solid white;
+  margin: 0;
+  padding-bottom: 5px;
+}
+
+h3 {
+  font-family: Lato, Arial;
+  font-weight: 900;
+  font-size: 40px;
+  color: white;
+  margin: 20px auto;
+}
+
+h4 {
+  font-family: Lato, Arial;
+  font-weight: 700;
+  font-size: 28px;
+  color: white;
+}
+
+section {
+  padding: 10vh 0;
+}
+
+h3 i {
+  margin-right: 20px;
+}
+
+.about {
+  color: #FFF;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.about p {
+  margin: 20px auto;
+  font-weight: 300;
+  text-align: justify;
+  width: 580px;
+}
+
+.about-section {
+  background: #495ba7;
+  text-align: center;
+  box-shadow: inset 0 -15px 30px -15px #000;
+}
+
+.about-section button {
+  background: none;
+  border: 2px solid #FFF;
+  border-radius: 4px;
+  color: #FFF;
+  font-weight: 700;
+  height: 35px;
+  margin-top: 60px;
+  outline: none;
+}
+
+.about-section button i {
+  margin-right: 5px;
+}
+
+.about-section button:hover,
+.header-content button:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.btn-code {
+  background: #a7495b;
+  border: none;
+  color: #FFF;
+}
+
+.btn-proj {
+  background: #498aa7;
+  border: none;
+  color: #FFF;
+}
+
+.caption h4 {
+  font-weight: 700;
+}
+
+.contact {
+  background: #252525;
+  font-family: Lato, Arial;
+  padding: 100px;
+  text-align: center;
+}
+
+.contact a {
+  color: #FFF;
+  font-size: 1.3em;
+  font-weight: 300;
+}
+
+.contact a:hover {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+}
+
+.contact h3 {
+  font-size: 2em;
+  font-weight: 400;
+  width: 250px;
+}
+
+.contact i {
+  color: #FFF;
+  font-size: 1.6em;
+  margin-right: 10px;
+}
+
+.contact p {
+  margin-left: 30%;
+  text-align: left;
+}
+
+.contact-content {
+  margin: 0 auto;
+  width: 280px;
+}
+
+.creator {
+  background: #111;
+  padding: 5px;
+  text-align: center;
+}
+
+.creator p {
+  color: #FFF;
+  font-family: Lato, Arial;
+  font-size: 16px;
+  font-weight: 300;
+  margin: 0;
+}
+
+.desc-start {
+  margin: 20px 0;
+}
+
+.header-content {
+  color: #FFF;
+  padding-top: 33vh;
+  text-align: center;
+}
+
+.header-content a,
+.navbar-brand::first-letter {
+  color: #FFF;
+}
+
+.header-content button {
+  -moz-animation-delay: 1.75s;
+  -webkit-animation-delay: 1.75s;
+  animation-delay: 1.75s;
+  background: none;
+  border: 2px solid #FFF;
+  border-radius: 4px;
+  color: #FFF;
+  font-weight: 400;
+  height: 35px;
+  margin-top: 55px;
+  outline: none;
+  padding: 0 25px;
+}
+
+.navbar {
+  background: none;
+  border: none;
+  transition: background 0.8s;
+}
+
+.navbar-brand {
+  color: rgba(255, 255, 255, 0.8)!important;
+  font-family: Lato, Arial;
+  font-size: 36px;
+  font-weight: 900;
+}
+
+.navbar-default .navbar-nav li a {
+  color: rgba(255, 255, 255, 0.8);
+  font-family: 'Lato', Arial;
+  font-size: 16px;
+  font-weight: 700;
+  padding-bottom: 10px;
+}
+
+.navbar-default .navbar-nav li a:hover {
+  color: #FFF;
+  transition: color .3s;
+}
+
+.navbar-default .navbar-nav li a:focus {
+  color: #FFF;
+  transition: color .3s;
+}
+
+.navbar-toggle {
+  background: none!important;
+  color: #FFF;
+}
+
+.profilepic {
+  border: 20px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  margin: 65px auto;
+  width: 400px;
+}
+
+.project-tile {
+  padding: 2vh 5%;
+}
+
+.project-tile h4 {
+  color: #000;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.projectPills {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.projectPills span:nth-of-type(4) {
+  text-transform: none;
+}
+
+.projects {
+  box-shadow: inset 0 15px 30px -15px #000;
+  background: #a7495b;
+  text-align: center;
+}
+
+.social-icons {
+  font-size: 30px;
+  margin-top: 10px;
+}
+
+.social-icons i {
+  margin: 0 5px;
+}
+
+.social-icons i:hover {
+  color: rgba(0, 0, 0, 0.2);
+}
+
+.tagline {
+  text-align: center!important;
+}
+
+.technologies,
+.techsquares {
+  padding: 0;
+}
+
+.thumbnail {
+  background: #FFF;
+  border: none;
+}
+
+.thumbnail img {
+  width: 100%;
+}
+
+.f3 {
+  -webkit-animation-duration: 0.9s;
+  animation-duration: 0.9s;
+}
+
+.s3 {
+  -webkit-animation-duration: 1.5s;
+  animation-duration: 1.5s;
+}
+
+@media (max-width: 1200px) {
+  .about-section div img {
+    width: 40%;
+  }
+  .profilepic {
+    margin: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  h1 {
+    font-size: 36px;
+    font-weight: 900;
+    font-family: 'Lato';
+  }
+  h2 {
+    font-size: 18px;
+    font-weight: 300;
+    font-family: 'Lato';
+  }
+  .about-section div img {
+    width: 50%;
+  }
+  .social-icons i {
+    margin: 0;
+  }
+}
+
+@media(max-width: 605px) {
+  .about p {
+    width: 354px;
+  }
+  .about-section div img {
+    width: 60%;
+  }
+  section p {
+    font-size: 16px;
+  }
+}
+
+@media(max-width: 525px) {
+  h3 {
+    font-size: 32px;
+  }
+  .about-section div img {
+    width: 70%;
+  }
+  .about {
+    padding: 0;
+  }
+  .contact {
+    padding: 50px 0;
+  }
+}
+
+@media (max-width: 320px) {
+  .about p {
+    width: 280px;
+  }
+}
+
+
+/* Fix Landscape on Mobile */
+
+@media screen and (orientation: landscape) and (max-height: 375px) {
+  .header-content button {
+    display: none;
+  }
+  .thumbnail {
+    width: 55%;
+    margin: 0 auto;
+  }
+}
+    </style>
+</head>
+<body>
+    <header>
+    <nav class="navbar navbar-default navbar-fixed-top animated fadeInDown" role="navigation">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span>Show Menu</span>
+          </button>
+          <a class="navbar-brand" href="#">TP</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse" id="CollapseMenu">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="about-nav"><a href="#"><i class="fa fa-fw fa-user-o" aria-hidden="true"></i> About</a></li>
+            <li class="projects-nav"><a href="#"><i class="fa fa-fw fa-code" aria-hidden="true"></i> Projects</a></li>
+            <li class="contact-nav"><a href="#"><i class="fa fa-fw fa-envelope-o" aria-hidden="true"></i> Contact</a></li>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+    </nav>
+    <!-- HEADER CONTENT STARTS HERE -->
+    <div class="header-content" id="start-navbar-dark">
+      <h1 class="animated fadeInDown">Tyler Purvines</h1>
+      <h2 class="animated fadeInUp">Search Engine Specialist</h2>
+      <div class="social-icons animated fadeInUp">
+        <a href="https://www.github.com/Wheatability"><i class="fa fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/tpurvines"><i class="fa fa-linkedin"></i></a>
+        <a href="https://codepen.io/Wheatability/"><i class="fa fa-codepen"></i></a>
+        <a href="https://www.freecodecamp.com/wheatability"><i class="fa fa-free-code-camp"></i></a>
+      </div>
+      <button class="animated swing about-nav">About Me</button>
+    </div>
+  </header>
+  <!-- END HEADER -->
+  <div class="container-fluid">
+    <section class="row  about-section">
+      <!-- BEGIN SECTIONS -->
+      <div class="col-md-12 col-lg-6">
+        <img src="https://www.tylers.design/images/tyler.jpg" alt="Tyler's Picture" class="profilepic">
+      </div>
+      <div class="col-md-12 col-lg-6 about">
+        <h3 id="start-about-animation"><i class="fa fa-handshake-o" aria-hidden="true"></i>Hi, I'm Tyler!</h3>
+        <p class="tagline">I'm a front end developer with a zeal for readable, optimized code.</p>
+        <p class="desc-start">My goal is to leverage modern frameworks in order to create and maintain engaging applications. Driven by the constant
+          thirst for self improvement, I'm continually exploring new technologies and incorporating them into my work.</p>
+        <h4>Experience and Frameworks</h4>
+        <p class="desc-start">My primary focus is React and Vue.js, but I can also use vanilla javascript when a framework
+          isn't the best fit. Overall, I think Javascript is the future of the web!</p>
+        <h4>Goals for the Future</h4>
+        <p class="desc-start">I am working through the Front-End section on FreeCodeCamp and improving my knowledge of the Vue library. FreeCodeCamp
+          has been an invaluable resource for continuing my education. Firebase is on my radar for creating progressive web apps that dont rely on a backend.
+        </p>
+      </div>
+    </section>
+    <section class="row projects" id="start-projects">
+      <div class="col-xs-12">
+      </div>
+      <div class="col-xs-12 col-sm-6 col-lg-4 project-tile f3">
+        <div class="thumbnail">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/791586/quotr.jpg" alt="Project Image">
+          <div class="caption">
+            <h4>Quotr</h4>
+            <div class="projectPills">
+              <span class="label label-success">html5</span>
+              <span class="label label-info">sass</span>
+              <span class="label label-warning">JS ES6</span>
+              <span class="label label-primary">jQuery</span>
+              <span class="label label-danger">ajax</span>
+            </div>
+            <p>Generate Beautiful Quotes</p>
+            <a class="btn btn-default btn-proj" href="https://tylers.design/quotr" target="_blank">Show Project</a>
+            <a class="btn btn-default btn-code" href="https://www.github.com/Wheatability/quotr/" target="_blank">View Code</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-lg-4 project-tile f3">
+        <div class="thumbnail">
+          <img src="https://tylers.design/images/weather.jpg" alt="Snapshot Weather">
+          <div class="caption">
+            <h4>Snapshot Weather</h4>
+            <div class="projectPills">
+              <span class="label label-success">html5</span>
+              <span class="label label-info">sass</span>
+              <span class="label label-warning">JS ES6</span>
+              <span class="label label-primary">jQuery</span>
+              <span class="label label-danger">ajax</span>
+            </div>
+            <p>Your Weather at a Glimpse</p>
+            <a class="btn btn-default btn-proj" href="https://tylers.design/snapshotWeather" target="_blank">Show Project</a>
+            <a class="btn btn-default btn-code" href="https://www.github.com/Wheatability/snapshotWeather/" target="_blank">View Code</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-lg-4 project-tile f3">
+        <div class="thumbnail">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/791586/reactwikisearch.jpg" alt="Project Image">
+          <div class="caption">
+            <h4>React Wiki Search</h4>
+            <div class="projectPills">
+              <span class="label label-success">html</span>
+              <span class="label label-danger">sass</span>
+              <span class="label label-warning">ES6</span>
+              <span class="label label-primary">jQuery</span>
+              <span class="label label-info">React</span>
+            </div>
+            <p>A react-powered wikipedia search tool.</p>
+            <a class="btn btn-default btn-proj" href="https://tylers.design/react-wiki-search" target="_blank">Show Project</a>
+            <a class="btn btn-default btn-code" href="https://www.github.com/Wheatability/react-wiki-search" target="_blank">View Code</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-lg-4 project-tile s3">
+        <div class="thumbnail">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/791586/twitchdash.jpg" alt="Project Image">
+          <div class="caption">
+            <h4>Twitch Dashboard</h4>
+            <div class="projectPills">
+              <span class="label label-success">html5</span>
+              <span class="label label-danger">sass</span>
+              <span class="label label-warning">JS ES6</span>
+              <span class="label label-primary">jQuery</span>
+              <span class="label label-info">React</span>
+            </div>
+            <p>A dashboard for Twitch.tv streams.</p>
+            <a class="btn btn-default btn-proj" href="https://codepen.io/Wheatability/full/xgLZbb" target="_blank">Show Project</a>
+            <a class="btn btn-default btn-code" href="https://codepen.io/Wheatability/pen/xgLZbb" target="_blank">View Code</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-lg-4 project-tile s3">
+        <div class="thumbnail">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/791586/calculator.jpg" alt="Project Image">
+          <div class="caption">
+            <h4>Flexbox Calculator</h4>
+            <div class="projectPills">
+              <span class="label label-success">html5</span>
+              <span class="label label-info">sass</span>
+              <span class="label label-warning">JS ES6</span>
+            </div>
+            <p>A vanilla Javascript Calculator</p>
+            <a class="btn btn-default btn-proj" href="https://codepen.io/Wheatability/full/EWgWGg/" target="_blank">Show Project</a>
+            <a class="btn btn-default btn-code" href="https://codepen.io/Wheatability/pen/EWgWGg/" target="_blank">View Code</a>
+          </div>
+        </div>
+      </div>
+       <div class="col-xs-12 col-sm-6 col-lg-4 project-tile s3">
+        <div class="thumbnail">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/791586/TicTacToe.jpg" alt="Project Image">
+          <div class="caption">
+            <h4>Unbeatable Tic-Tac-Toe</h4>
+            <div class="projectPills">
+              <span class="label label-info">React</span>
+              <span class="label label-warning">JS ES6</span>
+              <span class="label label-primary">sass</span>
+            </div>
+            <p>Tic Tac Toe using minimax for AI</p>
+            <a class="btn btn-default btn-proj" href="https://codepen.io/Wheatability/full/MmaYvZ" target="_blank">Show Project</a>
+            <a class="btn btn-default btn-code" href="https://github.com/Wheatability/tic-tac-toe" target="_blank">View Code</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="row contact">
+      <div class="col-sm-12 col-md-6">
+        <div class="contact-content">
+          <h3>Let's Get In Touch!</h3>
+          <p><a href="https://www.github.com/Wheatability"><i class="fa fa-github"></i>GitHub</a></p>
+          <p><a href="https://www.linkedin.com/in/tpurvines"><i class="fa fa-linkedin"></i>Linked In</a></p>
+          <p><a href="https://codepen.io/Wheatability/"><i class="fa fa-codepen"></i>Codepen</a></p>
+          <p><a href="mailto:tylerpurvines@gmail.com"><i class="fa fa-envelope"></i>Email</a></p>
+        </div>
+      </div>
+      <div class="col-md-6">
+      </div>
+    </section>
+    <section class="row creator">
+      <div class="col-sm-12">
+        <p>Page <i class="fa fa-code"></i> with <i class="fa fa-heart"></i> by Tyler Purvines</p>
+      </div>
+    </section>
+    <!-- END SECTIONS -->
+  </div>
+  <script>
+
+$('.about-nav').click(function () {
+  $('html, body').animate({
+    scrollTop: $('.about-section').offset().top
+  }, 1300);
+});
+
+$('.projects-nav').click(function () {
+  $('html, body').animate({
+    scrollTop: $('.projects').offset().top
+  }, 1300);
+});
+
+$('.contact-nav').click(function () {
+  $('html, body').animate({
+    scrollTop: $('.contact').offset().top
+  }, 1300);
+});
+
+$(document).ready(function () {
+  var scrollStart = 0;
+  var scrollEnd = 0;
+  var hOffset = $('#start-navbar-dark').offset();
+  var aOffset = $('#start-about-animation').offset();
+  var pOffset = $('#start-projects').offset();
+
+  // Optimization flags so that it doesnt change css every scroll
+  var aboutAnimate = true;
+  var headerAnimate = true;
+  var projectsAnimate = true;
+
+  $(document).scroll(function () {
+    scrollStart = $(this).scrollTop();
+    scrollEnd = scrollStart + $(window).height();
+    if (scrollStart > hOffset.top && headerAnimate) {
+      $('.navbar').css('background', '#373737');
+      headerAnimate = false;
+    } else if (scrollStart === hOffset.top) {
+      $('.navbar').css('background', 'none');
+      headerAnimate = true;
+    } else if (scrollEnd > aOffset.top && aboutAnimate) {
+      $('.about p, .about h4').addClass('animated fadeInUp');
+      $('.about h3').addClass('animated fadeInDown');
+      aboutAnimate = false;
+    } 
+  });
+});
+
+window.sr = ScrollReveal();
+sr.reveal('.f3');
+sr.reveal('.s3');
+
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+</body>
+</html> --}}
+
+
+
+
+
+<!DOCTYPE html><html lang='en' class=''>
+<head>
+    <script src='//production-assets.codepen.io/assets/editor/live/console_runner-079c09a0e3b9ff743e39ee2d5637b9216b3545af0de366d4b9aad9dc87e26bfd.js'></script><script src='//production-assets.codepen.io/assets/editor/live/events_runner-73716630c22bbc8cff4bd0f07b135f00a0bdc5d14629260c3ec49e5606f98fdd.js'></script><script src='//production-assets.codepen.io/assets/editor/live/css_live_reload_init-2c0dc5167d60a5af3ee189d570b1835129687ea2a61bee3513dee3a50c115a77.js'></script><meta charset='UTF-8'><meta name="robots" content="noindex"><link rel="shortcut icon" type="image/x-icon" href="//production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" /><link rel="mask-icon" type="" href="//production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" /><link rel="canonical" href="https://codepen.io/hudsonmarinho/pen/FHGeK" />
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<style class="cp-pen-styles">
+#scroll-animate
+{
+  overflow: hidden;
+}
+
+#scroll-animate-main
+{
+  width: 100%;
+  left: 0;
+  position: fixed;
+}
+
+#heightPage,
+#heightScroll
+{
+  width: 10px;
+  top: 0;
+  position: absolute;
+  z-index: 99;
+}
+
+#heightPage
+{
+  left: 0;
+}
+
+#heightScroll
+{
+  right: 0;
+}
+
+header
+{
+  width: 100%;
+  height: 100%;
+  background: url(https://raw.githubusercontent.com/hudsonmarinho/header-and-footer-parallax-effect/master/assets/images/bg-header.jpg) no-repeat 50% 50%;
+  top: 0;
+  position: fixed;
+  z-index: -1;
+}
+
+footer
+{
+  width: 100%;
+  height: 300px;
+  background: gray;
+  bottom: -300px;
+  position: fixed;
+  z-index: -1;
+}
+
+.content
+{
+  height: 1000px;
+  min-height: 1000px;
+  background: #ededed;
+  position: relative;
+  z-index: 1;
+}
+
+.wrapper-parallax {
+  margin-top: 100%;
+  margin-bottom: 300px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+}
+
+h1{
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: Helvetica;
+  font-size: 150px;
+  color: #fff;
+}
+
+header h1{}
+
+.content h1{
+  line-height: 1000px;
+  color: #999;
+}
+
+footer h1
+{
+  line-height: 300px;
+}
+
+header,
+footer,
+#scroll-animate-main
+{
+  -webkit-transition-property: all;
+     -moz-transition-property: all;
+      transition-property: all;
+
+  -webkit-transition-duration: 0.4s;
+     -moz-transition-duration: 0.4s;
+      transition-duration: 0.4s;
+
+  -webkit-transition-timing-function: cubic-bezier(0, 0, 0, 1);
+     -moz-transition-timing-function: cubic-bezier(0, 0, 0, 1);
+      transition-timing-function: cubic-bezier(0, 0, 0, 1);
+}
+</style>
+</head>
+<body>
+<div id="scroll-animate">
+  <div id="scroll-animate-main">
+    <div class="wrapper-parallax">
+      <header>
+        <h1>Header</h1>
+      </header>
+
+      <section class="content">
+        <h1>Content</h1>
+      </section>
+
+      <footer>
+        <h1>Footer</h1>
+      </footer>
+    </div>
+  </div>
+</div>
+<script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script><script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script >
+    function scrollFooter(scrollY, heightFooter)
+{
+    console.log(scrollY);
+    console.log(heightFooter);
+
+    if(scrollY >= heightFooter)
+    {
+        $('footer').css({
+            'bottom' : '0px'
+        });
+    }
+    else
+    {
+        $('footer').css({
+            'bottom' : '-' + heightFooter + 'px'
+        });
+    }
+}
+
+$(window).load(function(){
+    var windowHeight        = $(window).height(),
+        footerHeight        = $('footer').height(),
+        heightDocument      = (windowHeight) + ($('.content').height()) + ($('footer').height()) - 20;
+
+    // Definindo o tamanho do elemento pra animar
+    $('#scroll-animate, #scroll-animate-main').css({
+        'height' :  heightDocument + 'px'
+    });
+
+    // Definindo o tamanho dos elementos header e conteúdo
+    $('header').css({
+        'height' : windowHeight + 'px',
+        'line-height' : windowHeight + 'px'
+    });
+
+    $('.wrapper-parallax').css({
+        'margin-top' : windowHeight + 'px'
+    });
+
+    scrollFooter(window.scrollY, footerHeight);
+
+    // ao dar rolagem
+    window.onscroll = function(){
+        var scroll = window.scrollY;
+
+        $('#scroll-animate-main').css({
+            'top' : '-' + scroll + 'px'
+        });
+        
+        $('header').css({
+            'background-position-y' : 50 - (scroll * 100 / heightDocument) + '%'
+        });
+
+        scrollFooter(scroll, footerHeight);
+    }
+});
+//# sourceURL=pen.js
+</script>
+</body></html>
+
+
+

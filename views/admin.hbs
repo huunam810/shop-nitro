@@ -1,0 +1,350 @@
+{{!-- <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{{pageTitle}}</title>
+
+        <!-- Bootstrap CSS -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.3/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <style type="css/stylesheet">
+            form legend {
+                font-size: 1.5em !important;
+            }
+            #vitualKeyboad {
+                margin-bottom: 20px !important;
+            }
+            #vitualKeyboad > span {
+                margin-right: 2px !important;
+            }
+        </style>
+
+    </head>
+    <body>
+
+        <div id="container">
+
+            <div class="col-md-4 col-md-offset-4">
+                <h1 class="text-center" style="margin: 50px 0 50px 0;">Classifield Project</h1>
+
+                <form action="/admin/login" method="POST" role="form">
+                    <legend>Administrator Login Panel</legend>
+
+                        {{#if hasErrors}}
+                        <div class="alert alert-danger">
+                            {{#each messages}}
+                                {{this}}
+                            {{/each}}
+                        </div>
+                        {{/if}}
+
+                    <div class="form-group">
+                        <label for=""></label>
+                        <input type="text" class="form-control" name="email" id="email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for=""></label>
+                        <input type="password" class="form-control" name="password" id="password" >
+                    </div>
+                
+                    
+                    <input type="hidden" name="_csrf" value="{{csrfToken}}" />
+                    <button type="submit" class="btn btn-primary pull-right">Admin Login >></button>
+                </form>
+            </div>
+
+        </div>
+
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Bootstrap JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </body>
+</html> --}}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
+    <title>Admin Login</title>
+    <style>
+        /*
+  MAIN RULES FOR CSS STYLESHEET
+*/
+.container {
+  width: 1170px;
+  margin: auto;
+}
+
+body {
+  background-color: rgb(0, 18, 30);
+}
+/************************************/
+
+
+
+/*
+  AdreNaline TeaM ADMIN PANEL
+*/
+.heading {
+  text-align: center;
+  margin: 150px 0 50px;
+  font-size: 30px;
+  color: rgb(8, 35, 54);
+}
+
+.span1 {
+  font-size: 32px;
+  font-weight: bold;
+  color: rgb(64, 155, 212);
+}
+
+.span1 span {
+  color: white;
+}
+
+.span2 {
+  font-size: 35px;
+  color: rgba(64, 155, 212, 0.5);
+  letter-spacing: 7px;
+  margin-left: 7px;
+  text-transform: uppercase;
+}
+
+hr {
+  width: 300px;
+  border: 2px solid;
+  border-radius: 5px;
+  color: rgb(8, 35, 54);
+}
+/************************************/
+
+
+
+/*
+  USERNAME INPUT
+*/
+.user {
+  width: 300px;
+  display: table;
+  padding: 15px 20px;
+  margin: auto;
+  font-size: 18px;
+  letter-spacing: 1px;
+  border: 0 none;
+  border-left: 2px solid rgb(0, 18, 30);
+  border-right: 2px solid rgb(0, 18, 30);
+  background-color: rgb(8, 35, 54);
+  color: rgb(113, 127, 136);
+}
+/************************************/
+
+
+
+/*
+  PASSWORD INPUT
+*/
+.pass {
+  width: 300px;
+  display: table;
+  padding: 15px 20px;
+  margin: 20px auto;
+  font-size: 18px;
+  letter-spacing: 1px;
+  border: 0 none;
+  border-left: 2px solid rgb(0, 18, 30);
+  border-right: 2px solid rgb(0, 18, 30);
+  background-color: rgb(8, 35, 54);
+  color: rgb(113, 127, 136);
+}
+/************************************/
+
+
+
+/*
+  USERNAME & PASSWORD INPUTS :hover
+*/
+.user:hover, .pass:hover {
+  border-left: 2px solid rgb(64, 155, 212);
+  border-right: 2px solid rgb(64, 155, 212);
+  color: rgb(64, 155, 212);
+}
+/************************************/
+
+
+
+/*
+  USERNAME & PASSWORD INPUTS :focus
+*/
+.user:focus, .pass:focus {
+  border-left: 5px solid rgb(64, 155, 212);
+  border-right: 5px solid rgb(64, 155, 212);
+  color: rgb(64, 155, 212);
+  background-color: rgb(0, 18, 30);
+  width: 350px;
+  border-radius: 5px;
+  transition: .6s;
+}
+/************************************/
+
+
+
+/*
+  USERNAME & PASSWORD INPUTS
+  :not(focus)
+*/
+.user:not(focus), .pass:not(focus) {
+  transition: .6s;
+}
+/************************************/
+
+.remdiv {
+  width: 300px;
+  margin: auto;
+}
+
+.remcheck {
+  margin-top: 4px;
+  margin-left: -20px;
+  float: left;
+}
+
+.remcheck:hover {
+  cursor: pointer;
+}
+
+.remspan {
+  color: rgb(113, 127, 136);
+}
+
+.remcheck:checked + .remspan {
+  color: rgb(64, 155, 212);
+  transition: .6s;
+}
+
+.remcheck:not(checked) + .remspan {
+  color: rgb(113, 127, 136);
+  transition: .6s;
+}
+
+.forgot {
+  float: right;
+  margin-right: -20px;
+  color: rgb(113, 127, 136);
+  text-transform: capitalize;
+  font-style: italic;
+}
+
+.forgot:hover {
+  color: rgb(113, 127, 136);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.submit {
+  display: table;
+  margin: 40px auto;
+  padding: 10px 0 10px 0;
+  width: 100px;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: rgb(8, 35, 54);
+  color: rgb(113, 127, 136);
+  border: 5px none rgb(0, 18, 30);
+}
+
+.submit:hover {
+  border-left: 5px solid rgb(64, 155, 212);
+  border-right: 5px solid rgb(64, 155, 212);
+  border-radius: 5px;
+  width: 90px;
+  cursor: pointer;
+  color: rgb(64, 155, 212);
+  background-color: rgb(0, 18, 30);
+  transition: .2s;
+}
+
+.submit:not(hover) {
+  color: rgb(113, 127, 136);
+  border: 5px none rgb(0, 18, 30);
+  transition: .6s;
+}
+
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+
+
+  <!-- Start Heading ************-->
+                        {{#if hasErrors}}
+                        <div class="alert alert-danger">
+                            {{#each messages}}
+                                {{this}}
+                            {{/each}}
+                        </div>
+                        {{/if}}
+  <div class="heading">
+    <span class="span1">
+      - SHOP
+      <span>
+        NITRO -
+      </span>
+    </span>
+
+    <br/>
+
+    <span class="span2">
+      admin panel
+    </span>
+    <hr/>
+
+  </div>
+  <!-- End Heading ****************-->
+
+
+  <!-- Start Form *****************-->
+  <form action="/admin/login" method="POST" role="form">
+
+
+    <!-- Start Username Input *****-->
+    {{!-- <input class="user" type="text" lang="en" maxlength="28" placeholder="Username" /> --}}
+    <input type="text" name="email" id="email" class="user" lang="en" maxlength="28" placeholder="Username">
+    <!-- End Username Input *******-->
+
+
+    <!-- Start Password Input *****-->
+    {{!-- <input class="pass" type="password" lang="en" maxlength="16" placeholder="Password" /> --}}
+    <input type="password" name="password" id="password" class="pass"   lang="en" maxlength="16" placeholder="Password">
+    <!-- End Password Input *******-->
+
+
+    
+    <input type="hidden" name="_csrf" value="{{csrfToken}}" />
+    <input class="submit" type="submit" value="login" />
+  </form>
+  <!-- End Form *******************-->
+
+
+  
+
+</div>
+</body>
+</html>
